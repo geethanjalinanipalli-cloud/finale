@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tourist Wristband Alert System</title>
+  
+  <style>
+    /* General Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      color: #2c3e50;
+    }
+
+    /* Alert Section */
+    .alert-section {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .alert-section h2 {
+      font-size: 24px;
+    }
+
+    #status-message {
+      font-size: 20px;
+      color: #e74c3c; /* Red color for alerts */
+      margin: 20px 0;
+    }
+
+    .btn {
+      background-color: #e74c3c;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #c0392b;
+    }
+
+    /* Alert Log Section */
+    .log-section {
+      margin-top: 30px;
+    }
+
+    .log-section h2 {
+      font-size: 22px;
+    }
+
+    #alert-log {
+      list-style: none;
+      padding: 0;
+    }
+
+    #alert-log li {
+      background-color: #ecf0f1;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Tourist Wristband Alert System</h1>
+      <p>Natural Disaster Alert System for Tourists</p>
+    </header>
+
+    <section class="alert-section">
+      <h2>Alert System Status</h2>
+      <p id="status-message">No Alerts</p>
+      <button id="trigger-alert-btn" class="btn">Send Alert</button>
+    </section>
+
+    <section class="log-section">
+      <h2>Alert Log</h2>
+      <ul id="alert-log">
+        <!-- Alert messages will appear here -->
+      </ul>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 Tourist Safety System</p>
+    </footer>
+  </div>
+
+  <script>
+    // Get DOM elements
+    const triggerAlertBtn = document.getElementById('trigger-alert-btn');
+    const statusMessage = document.getElementById('status-message');
+    const alertLog = document.getElementById('alert-log');
+
+    // Function to simulate sending an alert
+    function sendAlert() {
+      // Change status message
+      statusMessage.textContent = 'Alert Triggered! Call for help immediately.';
+      statusMessage.style.color = '#e74c3c'; // Red alert color
+
+      // Log the alert in the alert log
+      const logItem = document.createElement('li');
+      const currentTime = new Date().toLocaleString();
+      logItem.textContent = `Alert sent at ${currentTime}`;
+      alertLog.appendChild(logItem);
+
+      // Change button to indicate the alert has been triggered
+      triggerAlertBtn.disabled = true;
+      triggerAlertBtn.textContent = 'Alert Sent!';
+    }
+
+    // Event listener for the alert button
+    triggerAlertBtn.addEventListener('click', () => {
+      sendAlert();
+    });
+  </script>
+
+</body>
+</html>
